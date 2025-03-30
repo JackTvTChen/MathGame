@@ -1,0 +1,32 @@
+{
+  "name": "project-shooting-star",
+  "version": "1.0.0",
+  "description": "Math education platform with React frontend and Node.js backend",
+  "private": true,
+  "dependencies": {
+    "@types/uuid": "^10.0.0",
+    "dotenv": "^16.4.7",
+    "react-scripts": "^5.0.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail \"cd backend && npm run dev\" \"cd project-shooting-star && npm run dev\"",
+    "start": "concurrently --kill-others-on-fail \"cd backend && npm start\" \"cd project-shooting-star && npm run preview\"",
+    "build": "concurrently \"cd backend && npm run lint:fix\" \"cd project-shooting-star && npm run build\"",
+    "test": "cd backend && npm test",
+    "lint": "concurrently \"cd backend && npm run lint\" \"cd project-shooting-star && npm run lint\"",
+    "install-all": "npm install && cd backend && npm install && cd ../project-shooting-star && npm install",
+    "config": "node ./backend/scripts/config-helper.js",
+    "generate-api": "node ./backend/scripts/api-generator.js",
+    "test-setup": "node ./backend/scripts/test-setup.js",
+    "docs": "node ./backend/scripts/doc-generator.js",
+    "project": "node ./backend/scripts/project-manager.js"
+  },
+  "workspaces": [
+    "backend",
+    "project-shooting-star"
+  ]
+}
